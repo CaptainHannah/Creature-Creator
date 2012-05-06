@@ -11,6 +11,7 @@
 		div.row { clear:both;}
 		div.radioRight { float:right; width: 50%; text-align: left; font-weight:bold}
 		div.radioLeft { float:left; width: 50%; text-align: right }
+		a.nextButton {width: 100%}
    </style>
    
    <script language="JavaScript">
@@ -21,38 +22,53 @@
 			}
 			return size;
 		};
-		
+
+		var choice = {};
+		function resetChoices(){
+			choice = {'base': '', 'gender': '', 'type1': 'mammal', 'type2': 'mammal'};
+		}
+		resetChoices();
+			
+		var images = {}; 
+			images['mammal'] = {};
+				images['mammal']['housecat'] = new Image();
+				images['mammal']['housecat'].src = 'http://media.tumblr.com/tumblr_m39u0sNHlM1qhf0xc.png';
+				images['mammal']['shrew'] = new Image();
+				images['mammal']['shrew'].src  = 'http://media.tumblr.com/tumblr_m39u5zZIrn1qhf0xc.png';
+				images['mammal']['aardvark'] = new Image();
+				images['mammal']['aardvark'].src  = 'http://media.tumblr.com/tumblr_m39tmyhjKs1qhf0xc.png';
+				images['mammal']['anteater'] = new Image();
+				images['mammal']['anteater'].src  = 'http://media.tumblr.com/tumblr_m39tx8nlRv1qhf0xc.png';
+				images['mammal']['dugong'] = new Image();
+				images['mammal']['dugong'].src  = 'http://media.tumblr.com/tumblr_m39txvNBRj1qhf0xc.png';
+				images['mammal']['elephant'] = new Image();
+				images['mammal']['elephant'].src  = 'http://media.tumblr.com/tumblr_m39tyofw4M1qhf0xc.png';
+				images['mammal']['hyrax'] = new Image();
+				images['mammal']['hyrax'].src  = 'http://media.tumblr.com/tumblr_m39u5ixZs61qhf0xc.png';
+				images['mammal']['manatee'] = new Image();
+				images['mammal']['manatee'].src  = 'http://media.tumblr.com/tumblr_m39u47FyZm1qhf0xc.png';
+				images['mammal']['sloth'] = new Image();
+				images['mammal']['sloth'].src  = 'http://media.tumblr.com/tumblr_m39u6jwKt01qhf0xc.png';
+			images['reptile'] = {};
+			images['amphibian'] = {};
+			images['bird'] = {};
+			images['fish'] = {};
+			images['insect'] = {};
+				
 		function pickRandomProperty(obj) {
 			var result;
 			var count = 0;
-			for (var prop in obj)
+			for (var prop in obj){
 				if (Math.random() < 1/++count)
 				   result = prop;
+			}
 			return result;
-		}
+		}		
 		
-		var theImages = {}; 
-			 theImages['housecat'] = 'http://media.tumblr.com/tumblr_m39u0sNHlM1qhf0xc.png'
-			 theImages['shrew'] = 'http://media.tumblr.com/tumblr_m39u5zZIrn1qhf0xc.png'
-			 theImages['aardvark'] = 'http://media.tumblr.com/tumblr_m39tmyhjKs1qhf0xc.png'
-			 theImages['anteater'] = 'http://media.tumblr.com/tumblr_m39tx8nlRv1qhf0xc.png'
-			 theImages['dugong'] = 'http://media.tumblr.com/tumblr_m39txvNBRj1qhf0xc.png'
-			 theImages['elephant'] = 'http://media.tumblr.com/tumblr_m39tyofw4M1qhf0xc.png'
-			 theImages['hyrax'] = 'http://media.tumblr.com/tumblr_m39u5ixZs61qhf0xc.png'
-			 theImages['manatee'] = 'http://media.tumblr.com/tumblr_m39u47FyZm1qhf0xc.png'
-			 theImages['sloth'] = 'http://media.tumblr.com/tumblr_m39u6jwKt01qhf0xc.png'
-		
-		//var preBuffer = {};
-		//for (var image in theImages){
-		//   preBuffer[image] = new Image();
-		//   preBuffer[image].src = theImages[images];
-		//}
-		
-		function showImage(id){
+		function swapImage(id, type){
 			var creatureImg = document.getElementById(id);
-			source = theImages[pickRandomProperty(theImages)];
+			source = images[type][pickRandomProperty(images[type])].src;
 			creatureImg.setAttribute('src', source); 
-			<!--document.write('<img src="'+theImages[pickRandomProperty(theImages)]+'">');-->
 		}
 		</script>
 </head>
@@ -69,14 +85,12 @@
 	</fieldset>  
 	<h2>Make a Monster</h2>
 	<h2><img src="Animal Pictures/Ice Phoenix Flat.jpg" width="265" height="415"></h2>
-	<!-- <ul id="home" title="Main Page" selected="true"> -->
-		<h2><a href="#humanoids">Humanoids</a></h2>
-		<p class="normalText">(A human with animal-like features)</p>   
-		<h2><a href="#centaurs">Centaurs</a></h2>
-		<p class="normalText">(Half human, half animal)</p>
-		<h2><a href="#combineanimals">Combine Animals</a></h2>
-		<p class="normalText">(No human parts)</p>
-	<!-- </ul> -->
+	<h2><a href="#humanoids">Humanoids</a></h2>
+	<p class="normalText">(A human with animal-like features)</p>   
+	<h2><a href="#centaurs">Centaurs</a></h2>
+	<p class="normalText">(Half human, half animal)</p>
+	<h2><a href="#combineanimals">Combine Animals</a></h2>
+	<p class="normalText">(No human parts)</p>
 	<h2>About</h2>
 	<fieldset>
 		<p class="normalText">This app is meant for artists and designers. It inspires them by creating a description of flora or fauna that they can draw or write about.</p>
@@ -88,8 +102,10 @@
 	<a id="backButton" class="button" href="#"></a>
 </div>
     
+ <!------------------- HUMANOIDS -------------------> 
+  
 <div id="humanoids" title="Humanoids" div class="headerbar">
-	<form title="Radio Button" class="panel" action="text_area.php" method="POST" selected="true">
+	<div class="panel">
 		<h2>Is your humanoid...</h2>
 		<fieldset>
 			<img src="Human Pictures/male.png" height="200">
@@ -102,19 +118,17 @@
 				<div class="radioRight">Female</div>
 				<div class="radioLeft"><input type="radio" name="humanoidGender" value="female" /></div>
 			</div>
-			<div class="row">
-				
+			<div class="row">				
 				<div class="radioRight">Random</div>
 				<div class="radioLeft"><input type="radio" name="humanoidGender" value="random" /></div>
-			</div> 
-			
-	 </fieldset>
-	 </form>
-  <h2><a href="#humanoidselector">Next</a></h2>
+			</div> 			
+		</fieldset>
+		<a class="nextButton" href="#humanoidselector"><button class="whiteButton">Next</button></a>
+	</div>
 </div>
    
 <div id="humanoidselector" title="Humanoids" class="headerbar">
-	<form title="Radio Button" class="panel" action="text_area.php" method="POST" selected="true">
+	<div class="panel">
 		<h2>And are they...</h2>
 		<fieldset>
 			<img src="Animal Pictures/Mammal/house cat.png" height="150">
@@ -129,7 +143,7 @@
 			</div>
 			<img src="Animal Pictures/Amphibian/frog.png" height="150">
 			<div class="row">
-				<div class="radioRight">An Ampibian</div>
+				<div class="radioRight">An ampibian</div>
 				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="amphibian" /></div>
 			</div>
 			<img src="Animal Pictures/Bird/bird.png" height="150">
@@ -152,8 +166,8 @@
 				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="random" /></div>
 			</div>
 		</fieldset>
-	</form>
-	<h2><a href="#humanoidfinalized">Next</a></h2>
+		<a class="nextButton" href="#humanoidfinalized"><button  onClick="swapImage('humanoidHalf2', choice['type1']);" class="whiteButton">Next</button></a>
+	</div>
 </div>
 
 <div id="humanoidfinalized" title="Humanoids" class="headerbar">
@@ -161,16 +175,16 @@
 		<h2>Your humanoid is...</h2>      
 		<h3>*An image of your selected human will appear here*</h3>
 		<h2>with features of a(n) </h2>
-		<img id="humanoidHalf2">        
-		<script language="JavaScript">showImage("humanoidHalf2");</script>           
+		<img id="humanoidHalf2">   
 	</div>
-	<h2><a href="#home">Main Menu</a></h2>
+	<h2><a href="#home" onClick="resetChoices();">Main Menu</a></h2>
 </div>
    
+ <!------------------- CENTAURS -------------------> 
+   
 <div id="centaurs" title="Centaurs" class="headerbar">
-	<!-- div class="row"> -->
-	<h2>Is your centaur...</h2>
-	<form title="Radio Button" class="panel" action="text_area.php" method="POST" selected="true">
+	<div class="panel">
+		<h2>Is your centaur...</h2>
 		<fieldset>
 			<img src="Human Pictures/male.png" height="200">
 			<div class="row">
@@ -187,15 +201,13 @@
 				<div class="radioLeft"><input type="radio" name="centaurGender" value="random" /></div>
 			</div>
 		</fieldset>
-	</form>
-	<!-- </div> -->
-	<h2><a href="#centaurselector">Next</a></h2>
+		<a class="nextButton" href="#centaurselector"><button onClick="" class="whiteButton">Next</button></a>
+	</div>
 </div>
     
 <div id="centaurselector" title="Centaurs" class="headerbar">
-	<!-- <div class="row"> -->
-	<h2>And is your centaur...</h2>
-	<form title="Radio Button" class="panel" action="text_area.php" method="POST" selected="true">
+	<div class="panel">
+		<h2>And is your centaur...</h2>
 		<fieldset>
 			<img src="Animal Pictures/Mammal/house cat.png" height="150">
 			<div class="row">
@@ -209,7 +221,7 @@
 			</div>
 			<img src="Animal Pictures/Amphibian/frog.png" height="150">
 			<div class="row">
-				<div class="radioRight">An Ampibian</div>
+				<div class="radioRight">An ampibian</div>
 				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="amphibian" /></div>
 			</div>
 			<img src="Animal Pictures/Bird/bird.png" height="150">
@@ -232,25 +244,25 @@
 				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="random" /></div>
 			</div>
 		</fieldset>
-	</form>
-	<!-- </div> -->
-	<h2><a href="#centaurfinalized">Next</a></h2>
+		<a class="nextButton" href="#centaurfinalized"><button  onClick="swapImage('centaurHalf2', choice['type1']);"  class="whiteButton">Next</button></a>
+	</div>
 </div>
     
 <div id="centaurfinalized" title="Centaurs" class="headerbar">
-	<div class="row"><h2>Your centaur is half...</h2>     
+	<div class="row">
+		<h2>Your centaur is half...</h2>     
 		<h3>*An image of your selected human will appear here*</h3>
 		<h2>and half</h2>
 		<img id="centaurHalf2">
-		<script language="JavaScript">showImage("centaurHalf2");</script>      
 	</div>
-	<h2><a href="#home">Main Menu</a></h2>
+	<h2><a href="#home" onClick="resetChoices();">Main Menu</a></h2>
 </div>
    
+ <!------------------- ANIMALS -------------------> 
+ 
 <div id="combineanimals" title="Combine Animals" class="headerbar">
-	<!-- <div class="row"> -->
-	<h2>What would you like to combine? (select two)</h2>
-	<form title="Radio Button" class="panel" action="text_area.php" method="POST" selected="true">
+	<div class="panel">
+		<h2>What would you like to combine? (select two)</h2>
 		<fieldset>
 			<img src="Animal Pictures/Mammal/house cat.png" height="150">
 			<div class="row">
@@ -264,7 +276,7 @@
 			</div>
 			<img src="Animal Pictures/Amphibian/frog.png" height="150">
 			<div class="row">
-				<div class="radioRight">An Ampibian</div>
+				<div class="radioRight">An ampibian</div>
 				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="amphibian" /></div>
 			</div>
 			<img src="Animal Pictures/Bird/bird.png" height="150">
@@ -287,21 +299,18 @@
 				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="random" /></div>
 			</div>
 		</fieldset>
-	</form>
-	<!-- </div> -->
-	<h2><a href="#monsterselector">Next</a></h2>
+		<a class="nextButton" href="#centaurfinalized"><button onClick="swapImage('animalHalf1', choice['type1']); swapImage('animalHalf1', choice['type2']);" class="whiteButton">Next</button></a>
+	</div>
 </div>
    
-<div id="monsterselector" title="Combine Animals" class="headerbar">
+<div id="animalfinalized" title="Combine Animals" class="headerbar">
 	<div class="row">
 		<h2>Your monster is part...</h2>
-	  	<img id="monsterHalf1" class="creature">
-   		<script language="JavaScript">showImage("monsterHalf1");</script>   
+	  	<img id="animalHalf1">
         <h2>and half</h2>        
-		<img id="monsterHalf2">
-   		<script language="JavaScript">showImage("monsterHalf2");</script>
+		<img id="animalHalf2">
 	</div>
-	<h2><a href="#home">Main Menu</a></h2>
+	<h2><a href="#home" onClick="resetChoices();">Main Menu</a></h2>
 </div>
  
 </body>
