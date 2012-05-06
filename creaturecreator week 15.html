@@ -7,6 +7,11 @@
    <link rel="stylesheet" href="iui/t/default/default-theme.css" type="text/css"/>
    <script type="application/x-javascript" src="iui/iui.js"></script>
    
+   <style type="text/css">
+		div.row { clear:both;}
+		div.radioRight { float:right; width: 50%; text-align: left; font-weight:bold}
+		div.radioLeft { float:left; width: 50%; text-align: right }
+   </style>
    
    <script language="JavaScript">
 		Object.size = function(obj) {
@@ -57,241 +62,247 @@
 	<h1 id="pageTitle"></h1>
 	<a id="backButton" class="button" href="#"></a>
 </div>
-
     
 <div id="home" title="Creature Creator" div class="headerbar" selected="true">
-
-  <fieldset>
-	  <p class="normalText"><b>Welcome to the Creature Creator.</b></p>
-  </fieldset>
-  
-  <h2>Make a Monster</h2>
-  <h2><img src="Animal Pictures/Ice Phoenix Flat.jpg" width="265" height="415"></h2>
-  
-    <ul id="home" title="Main Page" selected="true">
-      <h2><a href="#humanoids">Humanoids</a></h2>
-      <p class="normalText">(A human with animal-like features)</p>   
-      <h2><a href="#centaurs">Centaurs</a></h2>
-      <p class="normalText">(Half human, half animal)</p>
-      <h2><a href="#combineanimals">Combine Animals</a></h2>
-      <p class="normalText">(No human parts)</p>
-      
-  </ul>
-   
-  <h2>About</h2>
-  <fieldset>
-	  <p class="normalText">This app is meant for artists and designers. It inspires them by creating a description of flora or fauna that they can draw or write about.</p>
-  </fieldset>
+	<fieldset>
+		<p class="normalText"><b>Welcome to the Creature Creator.</b></p>
+	</fieldset>  
+	<h2>Make a Monster</h2>
+	<h2><img src="Animal Pictures/Ice Phoenix Flat.jpg" width="265" height="415"></h2>
+	<!-- <ul id="home" title="Main Page" selected="true"> -->
+		<h2><a href="#humanoids">Humanoids</a></h2>
+		<p class="normalText">(A human with animal-like features)</p>   
+		<h2><a href="#centaurs">Centaurs</a></h2>
+		<p class="normalText">(Half human, half animal)</p>
+		<h2><a href="#combineanimals">Combine Animals</a></h2>
+		<p class="normalText">(No human parts)</p>
+	<!-- </ul> -->
+	<h2>About</h2>
+	<fieldset>
+		<p class="normalText">This app is meant for artists and designers. It inspires them by creating a description of flora or fauna that they can draw or write about.</p>
+	</fieldset>
 </div>
 	
 <div class="headerbar">
-        <h1 id="pageTitle"></h1>
-        <a id="backButton" class="button" href="#"></a>
-    </div>
+	<h1 id="pageTitle"></h1>
+	<a id="backButton" class="button" href="#"></a>
+</div>
     
-  <div id="humanoids" title="Humanoids" div class="headerbar">
-     <form title="Radio Button" class="panel" action="text_area.php" method="POST" selected="true">
-         <h2>Is your humanoid...</h2>
-         <fieldset>
-           <img src="Human Pictures/male.png" height="200">
-           <div class="row">
-             <label>- Male</label>
-                <input type="radio" name="radio male" />
-           </div>
-            <img src="Human Pictures/female.png" height="200"> 
-            <div class="row">
-              <label> - Female</label>
-                <input type="radio" name="radio female" />
-            </div>
-            <div class="row">
-                <label>- Random</label>
-                <input type="radio" name="radio random human" />
-            </div> 
-            
-         </fieldset>
-         </form>
-      <h2><a href="#humanoidselector">Next</a></h2>
-   </div>
+<div id="humanoids" title="Humanoids" div class="headerbar">
+	<form title="Radio Button" class="panel" action="text_area.php" method="POST" selected="true">
+		<h2>Is your humanoid...</h2>
+		<fieldset>
+			<img src="Human Pictures/male.png" height="200">
+			<div class="row">
+				<div class="radioRight">Male</div>
+				<div class="radioLeft"><input type="radio" name="humanoidGender" value="male" /></div>
+		   </div>
+			<img src="Human Pictures/female.png" height="200"> 
+			<div class="row">
+				<div class="radioRight">Female</div>
+				<div class="radioLeft"><input type="radio" name="humanoidGender" value="female" /></div>
+			</div>
+			<div class="row">
+				
+				<div class="radioRight">Random</div>
+				<div class="radioLeft"><input type="radio" name="humanoidGender" value="random" /></div>
+			</div> 
+			
+	 </fieldset>
+	 </form>
+  <h2><a href="#humanoidselector">Next</a></h2>
+</div>
    
-   <div id="humanoidselector" title="Humanoids" class="headerbar">
-      <form title="Radio Button" class="panel" action="text_area.php" method="POST" selected="true">
-      	<h2>And are they...</h2>
-         <fieldset>
-           <img src="Animal Pictures/Mammal/house cat.png" height="150">
-           <div class="row">
-             <label>- A mammal</label>
-                <input type="radio" name="radio_button_test" />
-            </div>
-            <img src="Animal Pictures/Reptile/lizard.png" height="150">
-            <div class="row">
-              <label>- A reptile</label>
-                <input type="radio" name="radio_button_test" />
-            </div>
-            <img src="Animal Pictures/Amphibian/frog.png" height="150">
-            <div class="row">
-              <label>- An Ampibian</label>
-                <input type="radio" name="radio_button_test" />
-            </div>
-             <img src="Animal Pictures/Bird/bird.png" height="150">
-            <div class="row">
-              <label>- A bird</label>
-                <input type="radio" name="radio_button_test" />
-            </div>
-             <img src="Animal Pictures/Fish/fish.png" height="150">
-            <div class="row">
-              <label>- A fish</label>
-                <input type="radio" name="radio_button_test" />
-            </div>
-             <img src="Animal Pictures/Insect/butterfly.png" height="150">
-            <div class="row">
-              <label>- An insect</label>
-                <input type="radio" name="radio_button_test" />
-            </div>
-            <div class="row">
-                <label>- Random</label>
-                <input type="radio" name="radio_button_test" />
-            </div>
-         </fieldset>
-         </form>
-      <h2><a href="#humanoidfinalized">Next</a></h2>
-   </div>
-   
-   <div id="humanoidfinalized" title="Humanoids" class="headerbar">
-      <div class="row"><h2>Your humanoid is...</h2></p>      
-      	<h3>*An image of your selected human will appear here*</h3>
-        <h2>with features of a(n) </h2>
+<div id="humanoidselector" title="Humanoids" class="headerbar">
+	<form title="Radio Button" class="panel" action="text_area.php" method="POST" selected="true">
+		<h2>And are they...</h2>
+		<fieldset>
+			<img src="Animal Pictures/Mammal/house cat.png" height="150">
+			<div class="row">
+				<div class="radioRight">A mammal</div>
+				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="mammal"/></div>
+			</div>
+			<img src="Animal Pictures/Reptile/lizard.png" height="150">
+			<div class="row">
+				<div class="radioRight">A reptile</div>
+				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="reptile" /></div>
+			</div>
+			<img src="Animal Pictures/Amphibian/frog.png" height="150">
+			<div class="row">
+				<div class="radioRight">An Ampibian</div>
+				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="amphibian" /></div>
+			</div>
+			<img src="Animal Pictures/Bird/bird.png" height="150">
+			<div class="row">
+				<div class="radioRight">A bird</div>
+				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="bird" /></div>
+			</div>
+			<img src="Animal Pictures/Fish/fish.png" height="150">
+			<div class="row">
+				<div class="radioRight">A fish</div>
+				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="fish" /></div>
+			</div>
+			<img src="Animal Pictures/Insect/butterfly.png" height="150">
+			<div class="row">
+				<div class="radioRight">An insect</div>
+				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="insect" /></div>
+			</div>
+			<div class="row">
+				<div class="radioRight">Random</div>
+				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="random" /></div>
+			</div>
+		</fieldset>
+	</form>
+	<h2><a href="#humanoidfinalized">Next</a></h2>
+</div>
+
+<div id="humanoidfinalized" title="Humanoids" class="headerbar">
+	<div class="row">
+		<h2>Your humanoid is...</h2>      
+		<h3>*An image of your selected human will appear here*</h3>
+		<h2>with features of a(n) </h2>
 		<img id="humanoidHalf2">        
-   		<script language="JavaScript">showImage("humanoidHalf2");</script>           
-      </div>
-      <h2><a href="#home">Main Menu</a></h2>
-   </div>
-   
-   
+		<script language="JavaScript">showImage("humanoidHalf2");</script>           
+	</div>
+	<h2><a href="#home">Main Menu</a></h2>
+</div>
    
 <div id="centaurs" title="Centaurs" class="headerbar">
-         <div class="row"><h2>Is your centaur...</h2></p>
-         <form title="Radio Button" class="panel" action="text_area.php" method="POST" selected="true">
-         <fieldset>
-          <img src="Human Pictures/male.png" height="200">
-          <div class="row">
-             <label>- Male</label>
-                <input type="radio" name="radio male" />
-           </div>
-            <img src="Human Pictures/female.png" height="200"> 
-            <div class="row">
-              <label> - Female</label>
-                <input type="radio" name="radio female" />
-            </div>
-            <div class="row">
-                <label>- Random</label>
-                <input type="radio" name="radio random human" />
-            </div>
-         </fieldset>
-         </form>
-      </div>
-      <h2><a href="#centaurselector">Next</a></h2>
-    </div>
+	<!-- div class="row"> -->
+	<h2>Is your centaur...</h2>
+	<form title="Radio Button" class="panel" action="text_area.php" method="POST" selected="true">
+		<fieldset>
+			<img src="Human Pictures/male.png" height="200">
+			<div class="row">
+				<div class="radioRight">Male</div>
+				<div class="radioLeft"><input type="radio" name="centaurGender" value="female" /></div>
+			</div>
+			<img src="Human Pictures/female.png" height="200"> 
+			<div class="row">
+				<div class="radioRight">Female</div>
+				<div class="radioLeft"><input type="radio" name="centaurGender" value="female" /></div>
+			</div>
+			<div class="row">
+				<div class="radioRight">Random</div>
+				<div class="radioLeft"><input type="radio" name="centaurGender" value="random" /></div>
+			</div>
+		</fieldset>
+	</form>
+	<!-- </div> -->
+	<h2><a href="#centaurselector">Next</a></h2>
+</div>
     
-    <div id="centaurselector" title="Centaurs" class="headerbar">
-      <div class="row"><h2>And is your centaur...</h2></p>
-         <form title="Radio Button" class="panel" action="text_area.php" method="POST" selected="true">
-         <fieldset>
-            <img src="Animal Pictures/Mammal/house cat.png" height="150">
-           <div class="row">
-             <label>- A mammal</label>
-                <input type="radio" name="radio_button_test" />
-            </div>
-            <img src="Animal Pictures/Reptile/lizard.png" height="150">
-            <div class="row">
-              <label>- A reptile</label>
-                <input type="radio" name="radio_button_test" />
-            </div>
-            <img src="Animal Pictures/Amphibian/frog.png" height="150">
-            <div class="row">
-              <label>- An Ampibian</label>
-                <input type="radio" name="radio_button_test" />
-            </div>
-             <img src="Animal Pictures/Bird/bird.png" height="150">
-            <div class="row">
-              <label>- A bird</label>
-                <input type="radio" name="radio_button_test" />
-            </div>
-             <img src="Animal Pictures/Fish/fish.png" height="150">
-            <div class="row">
-              <label>- A fish</label>
-                <input type="radio" name="radio_button_test" />
-            </div>
-             <img src="Animal Pictures/Insect/butterfly.png" height="150">
-            <div class="row">
-              <label>- An insect</label>
-                <input type="radio" name="radio_button_test" />
-            </div>
-            <div class="row">
-                <label>- Random</label>
-                <input type="radio" name="radio_button_test" />
-            </div>
-         </fieldset>
-         </form>
-      </div>
-      <h2><a href="#centaurfinalized">Next</a></h2>
-   	</div>
+<div id="centaurselector" title="Centaurs" class="headerbar">
+	<!-- <div class="row"> -->
+	<h2>And is your centaur...</h2>
+	<form title="Radio Button" class="panel" action="text_area.php" method="POST" selected="true">
+		<fieldset>
+			<img src="Animal Pictures/Mammal/house cat.png" height="150">
+			<div class="row">
+				<div class="radioRight">A mammal</div>
+				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="mammal"/></div>
+			</div>
+			<img src="Animal Pictures/Reptile/lizard.png" height="150">
+			<div class="row">
+				<div class="radioRight">A reptile</div>
+				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="reptile" /></div>
+			</div>
+			<img src="Animal Pictures/Amphibian/frog.png" height="150">
+			<div class="row">
+				<div class="radioRight">An Ampibian</div>
+				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="amphibian" /></div>
+			</div>
+			<img src="Animal Pictures/Bird/bird.png" height="150">
+			<div class="row">
+				<div class="radioRight">A bird</div>
+				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="bird" /></div>
+			</div>
+			<img src="Animal Pictures/Fish/fish.png" height="150">
+			<div class="row">
+				<div class="radioRight">A fish</div>
+				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="fish" /></div>
+			</div>
+			<img src="Animal Pictures/Insect/butterfly.png" height="150">
+			<div class="row">
+				<div class="radioRight">An insect</div>
+				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="insect" /></div>
+			</div>
+			<div class="row">
+				<div class="radioRight">Random</div>
+				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="random" /></div>
+			</div>
+		</fieldset>
+	</form>
+	<!-- </div> -->
+	<h2><a href="#centaurfinalized">Next</a></h2>
+</div>
     
-    <div id="centaurfinalized" title="Centaurs" class="headerbar">
-      <div class="row"><h2>Your centaur is half...</h2></p>      
-      	<h3>*An image of your selected human will appear here*</h3>
-        <h2>and half</h2>
+<div id="centaurfinalized" title="Centaurs" class="headerbar">
+	<div class="row"><h2>Your centaur is half...</h2>     
+		<h3>*An image of your selected human will appear here*</h3>
+		<h2>and half</h2>
 		<img id="centaurHalf2">
-   		<script language="JavaScript">showImage("centaurHalf2");</script>      
-      </div>
-      <h2><a href="#home">Main Menu</a></h2>
-   </div>
+		<script language="JavaScript">showImage("centaurHalf2");</script>      
+	</div>
+	<h2><a href="#home">Main Menu</a></h2>
+</div>
    
-   <div id="combineanimals" title="Combine Animals" class="headerbar">
-    <fieldset>
-         <div class="row"><h2>What would you like to combine? (select two)</h2></p>
-         <div class="row">
-                <label>Mammal</label>
-                <input type="checkbox" name="checkbox_test" />
-         </div>
-         <div class="row">
-                <label>Reptile</label>
-                <input type="checkbox" name="checkbox_test" />
-         </div>
-         <div class="row">
-                <label>Amphibian</label>
-                <input type="checkbox" name="checkbox_test" />
-         </div>
-         <div class="row">
-                <label>Bird</label>
-                <input type="checkbox" name="checkbox_test" />
-         </div>
-         <div class="row">
-                <label>Fish</label>
-                <input type="checkbox" name="checkbox_test" />
-         </div>
-         <div class="row">
-                <label>Insect</label>
-                <input type="checkbox" name="checkbox_test" />
-         </div>
-         <div class="row">
-                <label>Random</label>
-                <input type="checkbox" name="checkbox_test" />
-         </div> 
-      </div>
-     </fieldset>
-     <h2><a href="#monsterselector">Next</a></h2>
-   </div>
+<div id="combineanimals" title="Combine Animals" class="headerbar">
+	<!-- <div class="row"> -->
+	<h2>What would you like to combine? (select two)</h2>
+	<form title="Radio Button" class="panel" action="text_area.php" method="POST" selected="true">
+		<fieldset>
+			<img src="Animal Pictures/Mammal/house cat.png" height="150">
+			<div class="row">
+				<div class="radioRight">A mammal</div>
+				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="mammal"/></div>
+			</div>
+			<img src="Animal Pictures/Reptile/lizard.png" height="150">
+			<div class="row">
+				<div class="radioRight">A reptile</div>
+				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="reptile" /></div>
+			</div>
+			<img src="Animal Pictures/Amphibian/frog.png" height="150">
+			<div class="row">
+				<div class="radioRight">An Ampibian</div>
+				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="amphibian" /></div>
+			</div>
+			<img src="Animal Pictures/Bird/bird.png" height="150">
+			<div class="row">
+				<div class="radioRight">A bird</div>
+				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="bird" /></div>
+			</div>
+			<img src="Animal Pictures/Fish/fish.png" height="150">
+			<div class="row">
+				<div class="radioRight">A fish</div>
+				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="fish" /></div>
+			</div>
+			<img src="Animal Pictures/Insect/butterfly.png" height="150">
+			<div class="row">
+				<div class="radioRight">An insect</div>
+				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="insect" /></div>
+			</div>
+			<div class="row">
+				<div class="radioRight">Random</div>
+				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="random" /></div>
+			</div>
+		</fieldset>
+	</form>
+	<!-- </div> -->
+	<h2><a href="#monsterselector">Next</a></h2>
+</div>
    
-   <div id="monsterselector" title="Combine Animals" class="headerbar">
-      <div class="row"><h2>Your monster is part...</h2></p>
+<div id="monsterselector" title="Combine Animals" class="headerbar">
+	<div class="row">
+		<h2>Your monster is part...</h2>
 	  	<img id="monsterHalf1" class="creature">
    		<script language="JavaScript">showImage("monsterHalf1");</script>   
         <h2>and half</h2>        
 		<img id="monsterHalf2">
    		<script language="JavaScript">showImage("monsterHalf2");</script>
-      </div>
-      <h2><a href="#home">Main Menu</a></h2>
-   </div>
+	</div>
+	<h2><a href="#home">Main Menu</a></h2>
+</div>
  
 </body>
 </html>
