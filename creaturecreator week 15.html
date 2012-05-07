@@ -8,68 +8,97 @@
    <script type="application/x-javascript" src="iui/iui.js"></script>
    
    <style type="text/css">
-		div.row { clear:both;}
+		div.row { clear:both}
 		div.radioRight { float:right; width: 50%; text-align: left; font-weight:bold}
 		div.radioLeft { float:left; width: 50%; text-align: right }
-		a.nextButton {width: 100%}
+		button.whiteButton,
+		a.nextButton {width: 100%; color: #000000}
    </style>
    
    <script language="JavaScript">
-		Object.size = function(obj) {
-			var size = 0, key;
-			for (key in obj) {
-				if (obj.hasOwnProperty(key)) size++;
-			}
-			return size;
-		};
-
-		var choice = {};
-		function resetChoices(){
-			choice = {'base': '', 'gender': '', 'type1': 'mammal', 'type2': 'mammal'};
-		}
-		resetChoices();
-			
-		var images = {}; 
-			images['mammal'] = {};
-				images['mammal']['housecat'] = new Image();
-				images['mammal']['housecat'].src = 'http://media.tumblr.com/tumblr_m39u0sNHlM1qhf0xc.png';
-				images['mammal']['shrew'] = new Image();
-				images['mammal']['shrew'].src  = 'http://media.tumblr.com/tumblr_m39u5zZIrn1qhf0xc.png';
-				images['mammal']['aardvark'] = new Image();
-				images['mammal']['aardvark'].src  = 'http://media.tumblr.com/tumblr_m39tmyhjKs1qhf0xc.png';
-				images['mammal']['anteater'] = new Image();
-				images['mammal']['anteater'].src  = 'http://media.tumblr.com/tumblr_m39tx8nlRv1qhf0xc.png';
-				images['mammal']['dugong'] = new Image();
-				images['mammal']['dugong'].src  = 'http://media.tumblr.com/tumblr_m39txvNBRj1qhf0xc.png';
-				images['mammal']['elephant'] = new Image();
-				images['mammal']['elephant'].src  = 'http://media.tumblr.com/tumblr_m39tyofw4M1qhf0xc.png';
-				images['mammal']['hyrax'] = new Image();
-				images['mammal']['hyrax'].src  = 'http://media.tumblr.com/tumblr_m39u5ixZs61qhf0xc.png';
-				images['mammal']['manatee'] = new Image();
-				images['mammal']['manatee'].src  = 'http://media.tumblr.com/tumblr_m39u47FyZm1qhf0xc.png';
-				images['mammal']['sloth'] = new Image();
-				images['mammal']['sloth'].src  = 'http://media.tumblr.com/tumblr_m39u6jwKt01qhf0xc.png';
-			images['reptile'] = {};
-			images['amphibian'] = {};
-			images['bird'] = {};
-			images['fish'] = {};
-			images['insect'] = {};
+		var images = {}
+			images['mammal'] = {}
+				images['mammal']['housecat'] = new Image()
+				images['mammal']['housecat'].src = 'http://media.tumblr.com/tumblr_m39u0sNHlM1qhf0xc.png'
+				images['mammal']['shrew'] = new Image()
+				images['mammal']['shrew'].src  = 'http://media.tumblr.com/tumblr_m39u5zZIrn1qhf0xc.png'
+				images['mammal']['aardvark'] = new Image()
+				images['mammal']['aardvark'].src  = 'http://media.tumblr.com/tumblr_m39tmyhjKs1qhf0xc.png'
+				images['mammal']['anteater'] = new Image()
+				images['mammal']['anteater'].src  = 'http://media.tumblr.com/tumblr_m39tx8nlRv1qhf0xc.png'
+				images['mammal']['dugong'] = new Image()
+				images['mammal']['dugong'].src  = 'http://media.tumblr.com/tumblr_m39txvNBRj1qhf0xc.png'
+				images['mammal']['elephant'] = new Image()
+				images['mammal']['elephant'].src  = 'http://media.tumblr.com/tumblr_m39tyofw4M1qhf0xc.png'
+				images['mammal']['hyrax'] = new Image()
+				images['mammal']['hyrax'].src  = 'http://media.tumblr.com/tumblr_m39u5ixZs61qhf0xc.png'
+				images['mammal']['manatee'] = new Image()
+				images['mammal']['manatee'].src  = 'http://media.tumblr.com/tumblr_m39u47FyZm1qhf0xc.png'
+				images['mammal']['sloth'] = new Image()
+				images['mammal']['sloth'].src  = 'http://media.tumblr.com/tumblr_m39u6jwKt01qhf0xc.png'
+			images['reptile'] = {}
+				images['reptile']['default'] = new Image()
+				images['reptile']['default'].src  = 'http://dl.dropbox.com/u/24367321/creatureDefault.png'				
+			images['amphibian'] = {}
+				images['amphibian']['default'] = new Image()
+				images['amphibian']['default'].src  = 'http://dl.dropbox.com/u/24367321/creatureDefault.png'			
+			images['bird'] = {}
+				images['bird']['default'] = new Image()
+				images['bird']['default'].src  = 'http://dl.dropbox.com/u/24367321/creatureDefault.png'			
+			images['fish'] = {}
+				images['fish']['default'] = new Image()
+				images['fish']['default'].src  = 'http://dl.dropbox.com/u/24367321/creatureDefault.png'			
+			images['insect'] = {}
+				images['insect']['default'] = new Image()
+				images['insect']['default'].src  = 'http://dl.dropbox.com/u/24367321/creatureDefault.png'			
 				
 		function pickRandomProperty(obj) {
-			var result;
-			var count = 0;
+			var result
+			var count = 0
 			for (var prop in obj){
 				if (Math.random() < 1/++count)
-				   result = prop;
+				   result = prop
 			}
-			return result;
-		}		
-		
-		function swapImage(id, type){
-			var creatureImg = document.getElementById(id);
-			source = images[type][pickRandomProperty(images[type])].src;
-			creatureImg.setAttribute('src', source); 
+			return result
 		}
+		
+		function getChecked(list){
+			var value
+			var radioButtons = document.getElementsByName(list)
+			for (var i = 0; i < radioButtons.length; i++){
+				console.log("element "+radioButtons[i]+"; checked "+radioButtons[i].checked+"; value "+radioButtons[i].value)
+				if (radioButtons[i].checked){
+					if(radioButtons[i].value != 'random'){
+						value = radioButtons[i].value
+					}else{
+						console.log(list+" radioButton "+i+" is checked as random")
+						value = radioButtons[Math.floor(Math.random() * radioButtons.length)]
+					}
+				}
+			}
+			console.log(list+" element set to "+value)
+			return value
+		}
+		
+		function finalize(base){
+			console.log("entering finalize")
+			switch(base){
+				case 'humanoid':
+					console.log("entering case 'humanoid'")
+					if (getChecked('humanoidGender') == 'male')
+						document.getElementById('humanoidHalf1').setAttribute('src', "Human Pictures/male.png")
+					else
+						document.getElementById('humanoidHalf1').setAttribute('src', "Human Pictures/female.png")
+
+					type = getChecked('humanoidType')
+					console.log("type = "+type)
+					randProp = pickRandomProperty(images[type])
+					console.log("random property of "+type+" is "+randProp)
+					document.getElementById('humanoidHalf2').setAttribute('src', images[type][randProp].src) 
+					break
+			}
+		}
+
 		</script>
 </head>
 
@@ -134,50 +163,50 @@
 			<img src="Animal Pictures/Mammal/house cat.png" height="150">
 			<div class="row">
 				<div class="radioRight">A mammal</div>
-				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="mammal"/></div>
+				<div class="radioLeft"><input type="radio" name="humanoidType" value="mammal"/></div>
 			</div>
 			<img src="Animal Pictures/Reptile/lizard.png" height="150">
 			<div class="row">
 				<div class="radioRight">A reptile</div>
-				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="reptile" /></div>
+				<div class="radioLeft"><input type="radio" name="humanoidType" value="reptile" /></div>
 			</div>
 			<img src="Animal Pictures/Amphibian/frog.png" height="150">
 			<div class="row">
 				<div class="radioRight">An ampibian</div>
-				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="amphibian" /></div>
+				<div class="radioLeft"><input type="radio" name="humanoidType" value="amphibian" /></div>
 			</div>
 			<img src="Animal Pictures/Bird/bird.png" height="150">
 			<div class="row">
 				<div class="radioRight">A bird</div>
-				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="bird" /></div>
+				<div class="radioLeft"><input type="radio" name="humanoidType" value="bird" /></div>
 			</div>
 			<img src="Animal Pictures/Fish/fish.png" height="150">
 			<div class="row">
 				<div class="radioRight">A fish</div>
-				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="fish" /></div>
+				<div class="radioLeft"><input type="radio" name="humanoidType" value="fish" /></div>
 			</div>
 			<img src="Animal Pictures/Insect/butterfly.png" height="150">
 			<div class="row">
 				<div class="radioRight">An insect</div>
-				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="insect" /></div>
+				<div class="radioLeft"><input type="radio" name="humanoidType" value="insect" /></div>
 			</div>
 			<div class="row">
 				<div class="radioRight">Random</div>
-				<div class="radioLeft"><input type="radio" name="humanoidAnimal" value="random" /></div>
+				<div class="radioLeft"><input type="radio" name="humanoidType" value="random" /></div>
 			</div>
 		</fieldset>
-		<a class="nextButton" href="#humanoidfinalized"><button  onClick="swapImage('humanoidHalf2', choice['type1']);" class="whiteButton">Next</button></a>
+		<a class="nextButton" href="#humanoidfinalized"><button  onClick="finalize('humanoid')" class="whiteButton">Next</button></a>
 	</div>
 </div>
 
 <div id="humanoidfinalized" title="Humanoids" class="headerbar">
 	<div class="row">
-		<h2>Your humanoid is...</h2>      
-		<h3>*An image of your selected human will appear here*</h3>
+		<h2>Your humanoid is...</h2>
+		<img id="humanoidHalf1">
 		<h2>with features of a(n) </h2>
-		<img id="humanoidHalf2">   
+		<img id="humanoidHalf2">
 	</div>
-	<h2><a href="#home" onClick="resetChoices();">Main Menu</a></h2>
+	<h2><a href="#home">Main Menu</a></h2>
 </div>
    
  <!------------------- CENTAURS -------------------> 
@@ -244,7 +273,7 @@
 				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="random" /></div>
 			</div>
 		</fieldset>
-		<a class="nextButton" href="#centaurfinalized"><button  onClick="swapImage('centaurHalf2', choice['type1']);"  class="whiteButton">Next</button></a>
+		<a class="nextButton" href="#centaurfinalized"><button  onClick="finalize('centaurHalf2', choice['type1'])"  class="whiteButton">Next</button></a>
 	</div>
 </div>
     
@@ -255,7 +284,7 @@
 		<h2>and half</h2>
 		<img id="centaurHalf2">
 	</div>
-	<h2><a href="#home" onClick="resetChoices();">Main Menu</a></h2>
+	<h2><a href="#home" onClick="resetChoices()">Main Menu</a></h2>
 </div>
    
  <!------------------- ANIMALS -------------------> 
@@ -299,7 +328,7 @@
 				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="random" /></div>
 			</div>
 		</fieldset>
-		<a class="nextButton" href="#centaurfinalized"><button onClick="swapImage('animalHalf1', choice['type1']); swapImage('animalHalf1', choice['type2']);" class="whiteButton">Next</button></a>
+		<a class="nextButton" href="#centaurfinalized"><button onClick="finalize('animalHalf1', choice['type1']); finalize('animalHalf1', choice['type2'])" class="whiteButton">Next</button></a>
 	</div>
 </div>
    
@@ -310,9 +339,12 @@
         <h2>and half</h2>        
 		<img id="animalHalf2">
 	</div>
-	<h2><a href="#home" onClick="resetChoices();">Main Menu</a></h2>
+	<h2><a href="#home" onClick="resetChoices()">Main Menu</a></h2>
 </div>
  
+ <script language="javascript">
+	//finalize('humanoid')
+</script>
 </body>
 </html>
 
