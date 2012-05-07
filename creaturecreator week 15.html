@@ -53,6 +53,7 @@
 				images['insect']['default'].src  = 'http://dl.dropbox.com/u/24367321/creatureDefault.png'			
 				
 		function pickRandomProperty(obj) {
+			result = ""
 			count = 0
 			for (prop in obj){
 				if (Math.random() < 1/++count)
@@ -63,7 +64,7 @@
 		
 		function getChecked(list){
 			radioButtons = document.getElementsByName(list)
-			for (var i = 0; i < radioButtons.length; i++){
+			for (i = 0; i < radioButtons.length; i++){
 				console.log("element "+radioButtons[i]+"; checked "+radioButtons[i].checked+"; value "+radioButtons[i].value)
 				if (radioButtons[i].checked){
 					if(radioButtons[i].value != 'random'){
@@ -93,6 +94,55 @@
 					randProp = pickRandomProperty(images[type])
 					console.log("random property of "+type+" is "+randProp)
 					document.getElementById('humanoidHalf2').setAttribute('src', images[type][randProp].src) 
+					break
+				case 'centaur':
+					console.log("entering case 'centaur'")
+					if (getChecked('centaurGender') == 'male')
+						document.getElementById('centaurHalf1').setAttribute('src', "Human Pictures/male.png")
+					else
+						document.getElementById('centaurHalf1').setAttribute('src', "Human Pictures/female.png")
+
+					type = getChecked('centaurType')
+					console.log("type = "+type)
+					randProp = pickRandomProperty(images[type])
+					console.log("random property of "+type+" is "+randProp)
+					document.getElementById('centaurHalf2').setAttribute('src', images[type][randProp].src) 
+					break
+				case 'animal':
+					console.log("entering case 'animal'")
+					// cycle through all options, the first selection is type1, 2nd is type2
+					// if fewer than two selections are made, substitute with a random option
+					
+					checkBoxes = document.getElementsByName('animalType')
+					type = []
+					count = 0; maxCount = 2
+					for (i = 0; i < checkBoxes.length; i++){
+						if(count < maxCount){
+							console.log("element "+checkBoxes[i]+"; checked "+checkBoxes[i].checked+"; value "+checkBoxes[i].value)
+							if (checkBoxes[i].checked){
+								if(checkBoxes[i].value != 'random'){
+									count++
+									type[count] = checkBoxes[i].value
+									console.log("animal type["+count+"] = "+type[count])
+								}else{
+									count++
+									type[count] = checkBoxes[Math.floor(Math.random() * (checkBoxes.length - 1))].value
+									console.log("animal type["+count+"] = random = "+type[count])
+								}
+							}
+						}
+					}
+					if(!type[2]){
+						type[2] = checkBoxes[Math.floor(Math.random() * (checkBoxes.length - 1))].value
+						if(!type[1])
+							type[1] = checkBoxes[Math.floor(Math.random() * (checkBoxes.length - 1))].value
+					}
+					randProp = pickRandomProperty(images[type[1]])
+					console.log("random property of type[1]"+type[1]+" is "+randProp)
+					document.getElementById('animalHalf1').setAttribute('src', images[type[1]][randProp].src) 
+					randProp = pickRandomProperty(images[type[2]])
+					console.log("random property of type[2]"+type[2]+" is "+randProp)
+					document.getElementById('animalHalf2').setAttribute('src', images[type[2]][randProp].src) 
 					break
 			}
 		}
@@ -239,50 +289,50 @@
 			<img src="Animal Pictures/Mammal/house cat.png" height="150">
 			<div class="row">
 				<div class="radioRight">A mammal</div>
-				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="mammal"/></div>
+				<div class="radioLeft"><input type="radio" name="centaurType" value="mammal"/></div>
 			</div>
 			<img src="Animal Pictures/Reptile/lizard.png" height="150">
 			<div class="row">
 				<div class="radioRight">A reptile</div>
-				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="reptile" /></div>
+				<div class="radioLeft"><input type="radio" name="centaurType" value="reptile" /></div>
 			</div>
 			<img src="Animal Pictures/Amphibian/frog.png" height="150">
 			<div class="row">
 				<div class="radioRight">An ampibian</div>
-				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="amphibian" /></div>
+				<div class="radioLeft"><input type="radio" name="centaurType" value="amphibian" /></div>
 			</div>
 			<img src="Animal Pictures/Bird/bird.png" height="150">
 			<div class="row">
 				<div class="radioRight">A bird</div>
-				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="bird" /></div>
+				<div class="radioLeft"><input type="radio" name="centaurType" value="bird" /></div>
 			</div>
 			<img src="Animal Pictures/Fish/fish.png" height="150">
 			<div class="row">
 				<div class="radioRight">A fish</div>
-				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="fish" /></div>
+				<div class="radioLeft"><input type="radio" name="centaurType" value="fish" /></div>
 			</div>
 			<img src="Animal Pictures/Insect/butterfly.png" height="150">
 			<div class="row">
 				<div class="radioRight">An insect</div>
-				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="insect" /></div>
+				<div class="radioLeft"><input type="radio" name="centaurType" value="insect" /></div>
 			</div>
 			<div class="row">
 				<div class="radioRight">Random</div>
-				<div class="radioLeft"><input type="radio" name="centaurAnimal" value="random" /></div>
+				<div class="radioLeft"><input type="radio" name="centaurType" value="random" /></div>
 			</div>
 		</fieldset>
-		<a class="nextButton" href="#centaurfinalized"><button  onClick="finalize('centaurHalf2', choice['type1'])"  class="whiteButton">Next</button></a>
+		<a class="nextButton" href="#centaurfinalized"><button  onClick="finalize('centaur')"  class="whiteButton">Next</button></a>
 	</div>
 </div>
     
 <div id="centaurfinalized" title="Centaurs" class="headerbar">
 	<div class="row">
 		<h2>Your centaur is half...</h2>     
-		<h3>*An image of your selected human will appear here*</h3>
+		<img id="centaurHalf1">
 		<h2>and half</h2>
 		<img id="centaurHalf2">
 	</div>
-	<h2><a href="#home" onClick="resetChoices()">Main Menu</a></h2>
+	<h2><a href="#home">Main Menu</a></h2>
 </div>
    
  <!------------------- ANIMALS -------------------> 
@@ -294,39 +344,39 @@
 			<img src="Animal Pictures/Mammal/house cat.png" height="150">
 			<div class="row">
 				<div class="radioRight">A mammal</div>
-				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="mammal"/></div>
+				<div class="radioLeft"><input type="checkbox" name="animalType" value="mammal"/></div>
 			</div>
 			<img src="Animal Pictures/Reptile/lizard.png" height="150">
 			<div class="row">
 				<div class="radioRight">A reptile</div>
-				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="reptile" /></div>
+				<div class="radioLeft"><input type="checkbox" name="animalType" value="reptile" /></div>
 			</div>
 			<img src="Animal Pictures/Amphibian/frog.png" height="150">
 			<div class="row">
 				<div class="radioRight">An ampibian</div>
-				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="amphibian" /></div>
+				<div class="radioLeft"><input type="checkbox" name="animalType" value="amphibian" /></div>
 			</div>
 			<img src="Animal Pictures/Bird/bird.png" height="150">
 			<div class="row">
 				<div class="radioRight">A bird</div>
-				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="bird" /></div>
+				<div class="radioLeft"><input type="checkbox" name="animalType" value="bird" /></div>
 			</div>
 			<img src="Animal Pictures/Fish/fish.png" height="150">
 			<div class="row">
 				<div class="radioRight">A fish</div>
-				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="fish" /></div>
+				<div class="radioLeft"><input type="checkbox" name="animalType" value="fish" /></div>
 			</div>
 			<img src="Animal Pictures/Insect/butterfly.png" height="150">
 			<div class="row">
 				<div class="radioRight">An insect</div>
-				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="insect" /></div>
+				<div class="radioLeft"><input type="checkbox" name="animalType" value="insect" /></div>
 			</div>
 			<div class="row">
 				<div class="radioRight">Random</div>
-				<div class="radioLeft"><input type="checkbox" name="animalAnimal" value="random" /></div>
+				<div class="radioLeft"><input type="checkbox" name="animalType" value="random" /></div>
 			</div>
 		</fieldset>
-		<a class="nextButton" href="#animalfinalized"><button onClick="swapImage('animalHalf1', choice['type1']); swapImage('animalHalf2', choice['type2']);" class="whiteButton">Next</button></a>
+		<a class="nextButton" href="#animalfinalized"><button  onClick="finalize('animal')" class="whiteButton">Next</button></a>
 	</div>
 </div>
    
@@ -337,12 +387,8 @@
         <h2>and half</h2>        
 		<img id="animalHalf2">
 	</div>
-	<h2><a href="#home" onClick="resetChoices()">Main Menu</a></h2>
+	<h2><a href="#home">Main Menu</a></h2>
 </div>
- 
- <script language="javascript">
-	//finalize('humanoid')
-</script>
 </body>
 </html>
 

@@ -1,0 +1,337 @@
+Humanoids
+	male
+		mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		reptile
+			random - default
+		amphibian
+			random - default
+		bird
+			random - default
+		fish
+			random - default
+		insect
+			random - default
+		random - mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		random - reptile
+			random - default
+		random - amphibian
+			random - default
+		random - bird
+			random - default
+		random - fish
+			random - default
+		random - insect
+			random - default
+	female
+		mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		reptile
+			random - default
+		amphibian
+			random - default
+		bird
+			random - default
+		fish
+			random - default
+		insect
+			random - default
+		random - mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		random - reptile
+			random - default
+		random - amphibian
+			random - default
+		random - bird
+			random - default
+		random - fish
+			random - default
+		random - insect
+			random - default
+	random - male
+		mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		reptile
+			random - default
+		amphibian
+			random - default
+		bird
+			random - default
+		fish
+			random - default
+		insect
+			random - default
+		random - mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		random - reptile
+			random - default
+		random - amphibian
+			random - default
+		random - bird
+			random - default
+		random - fish
+			random - default
+		random - insect
+			random - default
+	random - female
+		mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		reptile
+			random - default
+		amphibian
+			random - default
+		bird
+			random - default
+		fish
+			random - default
+		insect
+			random - default
+		random - mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		random - reptile
+			random - default
+		random - amphibian
+			random - default
+		random - bird
+			random - default
+		random - fish
+			random - default
+		random - insect
+			random - default
+Centaurs
+	male
+		mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		reptile
+			random - default
+		amphibian
+			random - default
+		bird
+			random - default
+		fish
+			random - default
+		insect
+			random - default
+		random - mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		random - reptile
+			random - default
+		random - amphibian
+			random - default
+		random - bird
+			random - default
+		random - fish
+			random - default
+		random - insect
+			random - default
+	female
+		mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		reptile
+			random - default
+		amphibian
+			random - default
+		bird
+			random - default
+		fish
+			random - default
+		insect
+			random - default
+		random - mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		random - reptile
+			random - default
+		random - amphibian
+			random - default
+		random - bird
+			random - default
+		random - fish
+			random - default
+		random - insect
+			random - default
+	random - male
+		mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		reptile
+			random - default
+		amphibian
+			random - default
+		bird
+			random - default
+		fish
+			random - default
+		insect
+			random - default
+		random - mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		random - reptile
+			random - default
+		random - amphibian
+			random - default
+		random - bird
+			random - default
+		random - fish
+			random - default
+		random - insect
+			random - default
+	random - female
+		mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		reptile
+			random - default
+		amphibian
+			random - default
+		bird
+			random - default
+		fish
+			random - default
+		insect
+			random - default
+		random - mammal
+			random - housecat
+			random - shrew
+			random - aardvark
+			random - anteater
+			random - dugong
+			random - elephant
+			random - hyrax
+			random - manatee
+			random - sloth
+		random - reptile
+			random - default
+		random - amphibian
+			random - default
+		random - bird
+			random - default
+		random - fish
+			random - default
+		random - insect
+			random - default
+Animals
+	Choose no Animals
+	Choose 1 Animal (not random)
+	Choose 2 Animals (not random)
+	Choose no Animal, but 1 random
+	Choose 1 animal and 1 random
+	Choose more than 2 Animals (with or without random)
